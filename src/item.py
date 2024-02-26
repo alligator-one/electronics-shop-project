@@ -44,7 +44,7 @@ class Item:
         то вырезает последующие после 10(и) символы.
         """
         if len(new_name) > 10:
-            print('Exception: Длина наименования товара превышает 10 символов.')
+            print('Длина наименования товара превышает 10 символов.')
         self.__name = new_name[:10]
 
     @classmethod
@@ -67,3 +67,10 @@ class Item:
         Преобраует строку в число
         """
         return int(float(num_string))
+
+    """Магические методы  repr и str"""
+    def __repr__(self) -> str:
+        return f'Item{self.__name, self.price, self.quantity}'
+
+    def __str__(self) -> str:
+        return self.__name
