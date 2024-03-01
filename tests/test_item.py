@@ -45,11 +45,12 @@ def test__repr__():
     """
     Тест магического метода repr
     """
-    assert data.__repr__() == "Item('Смартфон', 8000.0, 20)"
+    assert repr(data) == "Item('Смартфон', 8000, 20)"
 
 
 def test__str__():
     """
     Тест магического метода str
     """
-    assert data.__str__() == 'Смартфон'
+
+    assert str(data) == 'Смартфон'
