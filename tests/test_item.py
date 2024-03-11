@@ -1,4 +1,5 @@
 from src.item import Item
+from src.phone import Phone
 
 data = Item("Смартфон", 10000, 20)
 
@@ -28,7 +29,7 @@ class Tests:
         """
         Проверка метода инициализируеющнго экземпляры класса Item данными из файла src/items.csv
         """
-        Item.instantiate_from_csv('src/items.csv')
+        Item.instantiate_from_csv('items.csv')
         assert len(Item.all) == 5
 
     def test_string_to_number(self):
@@ -45,10 +46,17 @@ def test__repr__():
     """
     Тест магического метода repr
     """
-    assert repr(data) == "Item('Смартфон', 8000, 20)"
+    data.name = 'Смартфон'
+    assert repr(data) == "Item('Смартфон', 8000.0, 20)"
+
+def test_add():
+    item2 = Item('Телефон', 10000, 5)
+    phone1 = Phone("iPhone 14", 120_000, 5, 2)
+    assert item2 + phone1 == 10
 
 
 def test__str__():
+    data.name = "Смартфон"
     """
     Тест магического метода str
     """
