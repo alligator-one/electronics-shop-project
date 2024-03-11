@@ -1,4 +1,5 @@
 from src.item import Item
+import re
 
 
 class Phone(Item):
@@ -20,7 +21,8 @@ class Phone(Item):
 
     @number_of_sim.setter
     def number_of_sim(self, testing_data):
-        if int(testing_data) > 0:
+
+        if int(testing_data) > 0 and bool(re.match(r'^-?\d+$', str(testing_data))) == True:
             self.__number_of_sim = int(testing_data)
         else:
             raise ValueError('Количество физических SIM-карт должно быть целым числом больше нуля.')

@@ -1,3 +1,5 @@
+import csv
+import os
 class Item:
     """
     Класс для представления товара в магазине.
@@ -52,10 +54,8 @@ class Item:
         """
         Инициализирует экземпляры класса Item данными из файла src/items.csv
         """
-        import csv
-        import os
         cls.all.clear()
-        path = os.path.join(os.path.dirname(__file__), 'items.csv')
+        path = os.path.join(os.path.dirname(__file__), data)
         with open(path, 'r', encoding='UTF-8') as f:
             reader = csv.DictReader(f)
             for read in reader:
@@ -74,3 +74,9 @@ class Item:
 
     def __str__(self) -> str:
         return self.__name
+
+    def __add__(self, other):
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+        else:
+            raise ValueError("Cannot add Phone with non-Phone instances")
